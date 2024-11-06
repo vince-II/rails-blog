@@ -1,17 +1,35 @@
-<form action="/articles" accept-charset="UTF-8" method="post">
-  <input type="hidden" name="authenticity_token" value="...">
+<h1>New Article</h1>
 
+<%= form_with model: @article do |form| %>
   <div>
-    <label for="article_title">Title</label><br>
-    <input type="text" name="article[title]" id="article_title">
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <%
+=begin%>
+  full_messages_for si for returing an array of user-friendly error message.
+<%
+=end%>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
-    <label for="article_body">Body</label><br>
-    <textarea name="article[body]" id="article_body"></textarea>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %><br>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
-    <input type="submit" name="commit" value="Create Article" data-disable-with="Create Article">
+    <%= form.submit %> 
+    
+
+    <%
+=begin%>
+  form.submit sends the data to 
+<%
+=end%>
   </div>
-</form>
+<% end %>
