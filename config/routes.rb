@@ -11,4 +11,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "/articles", to: "articles#index" # maps to articlesController
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end
